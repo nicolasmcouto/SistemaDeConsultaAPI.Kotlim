@@ -19,24 +19,19 @@ import org.springframework.web.bind.annotation.RestController
 class PacienteController (private val service: PacienteService
 ){
    @GetMapping
-    fun listar(): List<PacienteDTO>{
-       return service.listar()
-    }
+    fun listar(): List<PacienteDTO>{return service.listar() }
 
     @GetMapping("/{id}")
     fun buscaPorId(@PathVariable id: Long): ResponseEntity<PacienteDTO>{
         return service.buscaPorId(id)
-            ?.let{ResponseEntity.ok(it) }
-            ?: ResponseEntity.notFound().build()
+                     ?.let{ResponseEntity.ok(it) }
+                     ?: ResponseEntity.notFound().build()
     }
 
     @PostMapping
-    fun CriaPaciente(@Valid@RequestBody dto: PacienteDTO): ResponseEntity<PacienteDTO>{
-        val novo = service.salvar(dto)
-        return ResponseEntity.ok(novo)
-    }
+    fun CriaPaciente(@Valid@RequestBody dto: PacienteDTO): ResponseEntity<PacienteDTO>{ return ResponseEntity.ok(service.salvar(dto)) }
 
-    @DeleteMapping ("/{id}")
+    @DeleteMapping ("/{id}/deletar")
     fun deletar(@PathVariable id: Long): ResponseEntity<Unit>{
         service.deletar(id)
         return ResponseEntity.noContent().build()
@@ -44,9 +39,14 @@ class PacienteController (private val service: PacienteService
 
     @PutMapping("/{id}")
     fun atualizaPaciente(@PathVariable id: Long,@Valid@RequestBody dto: PacienteUpdateDTO): ResponseEntity<PacienteUpdateDTO>{
-           service.atualiza(id, dto)
-
+        service.atualiza(id, dto)
         return ResponseEntity.ok(dto)
+    }
+
+    @DeleteMapping("/{id}")
+    fun softDelete(@PathVariable id: Long): ResponseEntity<Unit>{
+        service.softDelete(id)
+        return ResponseEntity.noContent().build()
     }
 
 }

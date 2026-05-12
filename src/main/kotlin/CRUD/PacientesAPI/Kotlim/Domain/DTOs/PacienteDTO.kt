@@ -10,8 +10,8 @@ data class PacienteDTO(
     @field: NotBlank(message = "nome é obrigatorio")
     val nome: String,
     @field: Email(message = "Email invalido")
-    val email: String? = null,
+    val email: String,
     @field: Past(message = "Data invalida")
-    val dataDeNascimento: LocalDate? = null,
+    val dataDeNascimento: LocalDate,
     val ativa: Boolean = true
 )

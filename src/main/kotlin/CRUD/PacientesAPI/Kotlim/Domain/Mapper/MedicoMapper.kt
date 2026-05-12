@@ -4,7 +4,7 @@ import CRUD.PacientesAPI.Kotlim.Domain.DTOs.MedicoDTO
 import CRUD.PacientesAPI.Kotlim.Domain.DTOs.MedicoUpdateDTO
 import CRUD.PacientesAPI.Kotlim.Domain.Entity.MedicoEntity
 
-fun MedicoEntity.toDTO() = MedicoDTO(
+fun MedicoEntity.toAgendamentoDTO() = MedicoDTO(
     id = this.id,
     nome = this.nome,
     crm = this.crm,
@@ -13,7 +13,7 @@ fun MedicoEntity.toDTO() = MedicoDTO(
     ativa = this.ativa
 )
 
-fun List<MedicoEntity>.toDTO(): List<MedicoDTO> = this.map { it.toDTO() }
+fun List<MedicoEntity>.toAgendamentoDTO(): List<MedicoDTO> = this.map { it.toAgendamentoDTO() }
 
 fun MedicoDTO.toEntity() = MedicoEntity(
     id = this.id,

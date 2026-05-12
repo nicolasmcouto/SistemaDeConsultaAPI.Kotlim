@@ -18,7 +18,7 @@ class ConsultaEntity(
     @JoinColumn(name = "paciente_id")
     var  pacienteId : PacienteEntity,
 
-    @Column
+    @Column(unique = true)
     var  data : LocalDateTime
 ) {
 

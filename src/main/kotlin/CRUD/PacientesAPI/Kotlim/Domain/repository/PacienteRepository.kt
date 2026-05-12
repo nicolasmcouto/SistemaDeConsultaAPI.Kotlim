@@ -11,5 +11,5 @@ interface PacienteRepository : JpaRepository<PacienteEntity,Long> {
 
     fun findByEmail(email: String): PacienteEntity?
     fun existsById(id: Long?): Boolean
-
+    fun existsByEmail(email: String?): Boolean
 }
