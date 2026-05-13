@@ -1,4 +1,4 @@
-package CRUD.PacientesAPI.Kotlim.Infra
+package CRUD.PacientesAPI.Kotlim.Infra.Exceptions
 
 data class ErroValidacaoDTO(
     val campo: String,

@@ -1,7 +1,6 @@
-package CRUD.PacientesAPI.Kotlim.Infra
+package CRUD.PacientesAPI.Kotlim.Infra.Exceptions
 
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
@@ -20,7 +19,7 @@ class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException :: class)
     fun handleValidation(ex: MethodArgumentNotValidException): ResponseEntity<List<ErroValidacaoDTO>>{
         val erros = ex.bindingResult.fieldErrors
-                      .map {ErroValidacaoDTO(campo = it.field, mensagem = it.defaultMessage ?: "invalido")  }
+                      .map { ErroValidacaoDTO(campo = it.field, mensagem = it.defaultMessage ?: "invalido")  }
             return ResponseEntity.badRequest().body(erros)
     }
 

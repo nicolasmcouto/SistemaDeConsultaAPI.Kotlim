@@ -7,10 +7,9 @@ import CRUD.PacientesAPI.Kotlim.Domain.Mapper.toAgendamentoDTO
 import CRUD.PacientesAPI.Kotlim.Domain.Mapper.toEntity
 import CRUD.PacientesAPI.Kotlim.Domain.Mapper.toupDTO
 import CRUD.PacientesAPI.Kotlim.Domain.repository.MedicoRepository
-import CRUD.PacientesAPI.Kotlim.Infra.ConflictException
-import CRUD.PacientesAPI.Kotlim.Infra.ResourceNotFoundException
+import CRUD.PacientesAPI.Kotlim.Infra.Exceptions.ConflictException
+import CRUD.PacientesAPI.Kotlim.Infra.Exceptions.ResourceNotFoundException
 import org.springframework.stereotype.Service
-import java.lang.RuntimeException
 
 
 @Service

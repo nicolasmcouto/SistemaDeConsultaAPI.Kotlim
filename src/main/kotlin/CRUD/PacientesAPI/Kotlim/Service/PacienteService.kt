@@ -2,19 +2,16 @@ package CRUD.PacientesAPI.Kotlim.Service
 
 import CRUD.PacientesAPI.Kotlim.Domain.DTOs.PacienteDTO
 import CRUD.PacientesAPI.Kotlim.Domain.DTOs.PacienteUpdateDTO
-import CRUD.PacientesAPI.Kotlim.Domain.Entity.MedicoEntity
 import CRUD.PacientesAPI.Kotlim.Domain.Entity.PacienteEntity
 import CRUD.PacientesAPI.Kotlim.Domain.Mapper.UpdateoDTO
 import CRUD.PacientesAPI.Kotlim.Domain.Mapper.toAgendamentoDTO
 import CRUD.PacientesAPI.Kotlim.Domain.Mapper.toEntity
 import CRUD.PacientesAPI.Kotlim.Domain.repository.PacienteRepository
-import CRUD.PacientesAPI.Kotlim.Infra.ConflictException
-import CRUD.PacientesAPI.Kotlim.Infra.ResourceNotFoundException
+import CRUD.PacientesAPI.Kotlim.Infra.Exceptions.ConflictException
+import CRUD.PacientesAPI.Kotlim.Infra.Exceptions.ResourceNotFoundException
 import org.springframework.data.repository.findByIdOrNull
 
 import org.springframework.stereotype.Service
-import java.lang.RuntimeException
-
 
 @Service
 class PacienteService(private val repository: PacienteRepository) {
@@ -50,7 +47,7 @@ class PacienteService(private val repository: PacienteRepository) {
 
     fun atualiza(id: Long, dto: PacienteUpdateDTO) : PacienteUpdateDTO{
         var existente = repository.findById(id)
-            .orElseThrow{ResourceNotFoundException("Paciente nao encontyrado")}
+            .orElseThrow{ ResourceNotFoundException("Paciente nao encontyrado") }
 
         existente.nome = dto.nome ?: existente.nome
         existente.email = dto.email ?: existente.email
