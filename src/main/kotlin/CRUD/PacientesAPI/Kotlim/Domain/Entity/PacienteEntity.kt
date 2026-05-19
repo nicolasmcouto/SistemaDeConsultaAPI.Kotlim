@@ -25,13 +25,15 @@ class PacienteEntity(
     var ativa: Boolean = true
 
 ) {
-    fun PacienteEntity.toDTO() = PacienteDTO(
+    fun PacienteEntity.toDTO() = {
+        PacienteDTO(
         id = id,
         nome = nome,
-        email = email,
-        dataDeNascimento = dataDeNascimento,
+        email = email!!,
+        dataDeNascimento = dataDeNascimento!!,
         ativa = ativa
     )
+    }
 
     fun PacienteDTO.toEntity() = PacienteEntity(
         id = id?: 0,

@@ -7,8 +7,8 @@ import CRUD.PacientesAPI.Kotlim.Domain.Entity.PacienteEntity
 fun PacienteEntity.toAgendamentoDTO() = PacienteDTO(
     id = this.id,
     nome = this.nome,
-    email = this.email,
-    dataDeNascimento = this.dataDeNascimento,
+    email = this.email!!,
+    dataDeNascimento = this.dataDeNascimento!!,
     ativa = this.ativa
 )
 

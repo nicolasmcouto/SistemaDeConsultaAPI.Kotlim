@@ -2,7 +2,6 @@ package CRUD.PacientesAPI.Kotlim.Service
 
 import CRUD.PacientesAPI.Kotlim.Domain.DTOs.AgendamentoConsultaDTO
 import CRUD.PacientesAPI.Kotlim.Domain.DTOs.ConsultaDTO
-import CRUD.PacientesAPI.Kotlim.Domain.Entity.ConsultaEntity
 import CRUD.PacientesAPI.Kotlim.Domain.Factory.ConsultaFactory
 import CRUD.PacientesAPI.Kotlim.Domain.Mapper.toAgendamentoDTO
 import CRUD.PacientesAPI.Kotlim.Domain.Mapper.toDTO
@@ -10,7 +9,7 @@ import CRUD.PacientesAPI.Kotlim.Domain.repository.ConsultaRepository
 import CRUD.PacientesAPI.Kotlim.Domain.repository.MedicoRepository
 import CRUD.PacientesAPI.Kotlim.Domain.repository.PacienteRepository
 import CRUD.PacientesAPI.Kotlim.Infra.Exceptions.ResourceNotFoundException
-import CRUD.PacientesAPI.Kotlim.Infra.Validators.ValidacaoAgendamento
+import CRUD.PacientesAPI.Kotlim.Infra.Validators.ValidacaoAgendamentoConsulta
 import org.springframework.stereotype.Service
 
 @Service
@@ -18,7 +17,7 @@ class ConsultaService(
     private val consultaRepository: ConsultaRepository,
     private val medicoRepository: MedicoRepository,
     private val pacienteRepository: PacienteRepository,
-    private val validacoes: List<ValidacaoAgendamento>
+    private val validacoes: List<ValidacaoAgendamentoConsulta>
 ) {
     fun agendarConsulta(dto: AgendamentoConsultaDTO): AgendamentoConsultaDTO {
 
